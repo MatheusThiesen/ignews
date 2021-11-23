@@ -26,7 +26,7 @@ export default function PostPreview({ post }: PostPreviewProps) {
     if (session?.activeSubscription) {
       router.push(`/posts/${post.slug}`);
     }
-  }, [session]);
+  }, [session, router, post.slug]);
 
   return (
     <>
@@ -56,14 +56,17 @@ export default function PostPreview({ post }: PostPreviewProps) {
 }
 
 export const getStaticPaths: GetStaticPaths = () => {
+  //Carrega a rotas enviandas no params apenas para rotas que recebem parametros
+  // paths: [
+  //   {
+  //     params: {
+  //       slug: "next.js---novidades-na-versao-10-e-atualizacao-do-blog",
+  //     },
+  //   },
+  // ],
+
   return {
-    paths: [
-      {
-        params: {
-          slug: "next.js---novidades-na-versao-10-e-atualizacao-do-blog",
-        },
-      },
-    ],
+    paths: [],
     fallback: "blocking",
   };
 };

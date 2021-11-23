@@ -14,7 +14,10 @@ type User = {
   };
 };
 
-export default async function (req: NextApiRequest, res: NextApiResponse) {
+export default async function Subscribe(
+  req: NextApiRequest,
+  res: NextApiResponse
+) {
   if (req.method === "POST") {
     const session = await getSession({ req });
 
@@ -56,6 +59,6 @@ export default async function (req: NextApiRequest, res: NextApiResponse) {
     return res.status(200).json({ sessionId: stripeCheckoutSession.id });
   } else {
     res.setHeader("Allow", "POST");
-    res.status(405).end("Method not allowed");
+    return res.status(405).end("Method not allowed");
   }
 }
