@@ -11,7 +11,12 @@ module.exports = {
     "\\.(scss|css|sass)$": "identity-obj-proxy",
   },
   collectCoverage: true,
-  collectCoverageFrom: ["src/**/*.tsx", "!src/**/*.spec.tsx"],
+  collectCoverageFrom: [
+    "src/**/*.tsx",
+    "!src/**/*.spec.tsx",
+    "!src/**/_app.tsx",
+    "!src/**/_document.tsx",
+  ],
   coverageReporters: ["lcov", "json"],
 };
 
